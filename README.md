@@ -17,6 +17,10 @@ rosdep install -r -y -i --from-paths .
 ```bash
 cd ~/ros2_ws/src
 colcon build --symlink-install
+source install/setup.bash
 ```
 
 # 実行
+```bash
+ros2 run state_pattern_demo state_pattern_node
+```

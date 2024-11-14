@@ -1,9 +1,7 @@
-// include/state_pattern_demo/concrete_state_b.hpp
 #ifndef STATE_PATTERN_DEMO_CONCRETE_STATE_B_HPP_
 #define STATE_PATTERN_DEMO_CONCRETE_STATE_B_HPP_
 
 #include "state_pattern_demo/state.hpp"
-#include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
 namespace state_pattern_demo {
@@ -15,6 +13,7 @@ private:
 
 public:
     ConcreteStateB();
+    void initialize() override;
     void MainLoop() override;
 };
 

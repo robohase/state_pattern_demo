@@ -16,7 +16,6 @@ include_directories(include)
 # Add the executable and specify all source files
 add_executable(state_pattern_node 
     src/main.cpp
-    src/state.cpp
     src/context.cpp
     src/concrete_state_a.cpp
     src/concrete_state_b.cpp
