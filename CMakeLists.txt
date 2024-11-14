@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find necessary packages
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(std_srvs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 # Include the include directory
 include_directories(include)
@@ -25,7 +25,7 @@ add_executable(state_pattern_node
 # Link against the necessary libraries
 ament_target_dependencies(state_pattern_node 
     rclcpp 
-    std_srvs
+    std_msgs
 )
 
 # Install the executable

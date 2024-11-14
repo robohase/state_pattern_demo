@@ -14,7 +14,9 @@ protected:
 
 public:
     virtual ~State() = default;
-    void set_context(std::shared_ptr<Context> context);
+    void set_context(std::shared_ptr<Context> context) {
+        context_ = context;
+    }
     virtual void MainLoop() = 0;
 };
 

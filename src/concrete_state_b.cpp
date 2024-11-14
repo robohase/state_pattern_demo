@@ -5,12 +5,24 @@
 
 namespace state_pattern_demo {
 
+ConcreteStateB::ConcreteStateB() : count_(0) {
+}
+
 void ConcreteStateB::MainLoop() {
-    auto node = std::dynamic_pointer_cast<Context>(context_);
+    auto node = std::dynamic_pointer_cast<rclcpp::Node>(context_);
     if (node) {
-        RCLCPP_INFO(node->get_logger(), "ConcreteStateB main loop running");
-        RCLCPP_INFO(node->get_logger(), "ConcreteStateB transitioning to StateA");
-        context_->TransitionTo(std::make_shared<ConcreteStateA>());
+        if (!publisher_) {
+            publisher_ = node->create_publisher<std_msgs::msg::String>("state_b/message", 10);
+        }
+
+        auto message = std_msgs::msg::String();
+        message.data = "Message from State B: " + std::to_string(count_++);
+        RCLCPP_INFO(node->get_logger(), "Publishing: '%s'", message.data.c_str());
+        publisher_->publish(message);
+
+        if (count_ >= 3) {
+            context_->TransitionTo(std::make_shared<ConcreteStateA>());
+        }
     }
 }
 
